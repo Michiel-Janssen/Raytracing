@@ -1,7 +1,4 @@
-URL=`git remote -v | grep origin | grep push | awk '{print($2)}'`
-ORG=`echo $URL | cut -d/ -f4`
-REPONAME=`echo $URL | cut -d/ -f5`
-REPO="$ORG/$REPONAME"
+REPO="ucll-3dcg-2122/raytracer-coffee-addicts"
 
 gh issue create --title "Bouncy and Elastic Animation" --label enhancement --body http://3dcg.leone.ucll.be/extensions/animations/bounce-elastic/explanations.html --project raytracer -R $REPO
 gh issue create --title "Circular Animation" --label enhancement --body http://3dcg.leone.ucll.be/extensions/animations/circular/explanations.html --project raytracer -R $REPO
