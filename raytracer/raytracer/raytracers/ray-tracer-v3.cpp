@@ -39,8 +39,8 @@ Color RayTracerV3::process_light_ray(const Scene& scene, const MaterialPropertie
 {
 	Color hit_color = colors::black();
 
-	hit_color = RayTracerV2::process_light_ray(scene, properties, hit, ray, light_ray);
-	hit_color = compute_specular(properties, hit, ray, light_ray);
+	hit_color += RayTracerV2::process_light_ray(scene, properties, hit, ray, light_ray);
+	hit_color += compute_specular(properties, hit, ray, light_ray);
 
 	return hit_color;
 }
