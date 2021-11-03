@@ -6,9 +6,13 @@ using namespace imaging;
 
 raytracer::MaterialProperties::MaterialProperties(
     const Color& ambient,
-    const Color& diffuse)
+    const Color& diffuse,
+    const Color& specular,
+    const double specular_exponent)
     : ambient(ambient)
     , diffuse(diffuse)
+    , specular(specular)
+    , specular_exponent(specular_exponent)
 {
     // NOP
 }
@@ -16,6 +20,8 @@ raytracer::MaterialProperties::MaterialProperties(
 raytracer::MaterialPropertiesBuilder::MaterialPropertiesBuilder()
     : m_ambient(colors::black())
     , m_diffuse(colors::black())
+    , m_specular(colors::black())
+    , m_specular_exponent(50)
 {
     // NOP
 }
@@ -34,10 +40,20 @@ raytracer::MaterialPropertiesBuilder& raytracer::MaterialPropertiesBuilder::diff
     return *this;
 }
 
+raytracer::MaterialPropertiesBuilder& raytracer::MaterialPropertiesBuilder::specular(const imaging::Color& color, const double x)
+{
+    m_specular = color;
+    m_specular_exponent = x;
+
+    return *this;
+}
+
 raytracer::MaterialPropertiesBuilder::operator raytracer::MaterialProperties() const
 {
     return MaterialProperties(
         m_ambient,
-        m_diffuse
+        m_diffuse,
+        m_specular,
+        m_specular_exponent
     );
 }
