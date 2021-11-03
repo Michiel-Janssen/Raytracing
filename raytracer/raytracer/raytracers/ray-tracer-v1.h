@@ -27,7 +27,7 @@ namespace raytracer
                 /// </returns>
                 TraceResult trace(const Scene& scene, const math::Ray& eye_ray) const override;
 
-                imaging::Color determine_color(const Scene& scene, const MaterialProperties& properties, const Hit& hit, const math::Ray&) const;
+                virtual imaging::Color determine_color(const Scene& scene, const MaterialProperties& properties, const Hit& hit, const math::Ray&) const;
 
             protected:
                 imaging::Color RayTracerV1::compute_ambient(const MaterialProperties&) const;

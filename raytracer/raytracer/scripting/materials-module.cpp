@@ -33,7 +33,7 @@ namespace
         {
             START_ARGUMENTS(argument_map);
             OPTIONAL_ARGUMENT(Color, ambient, colors::black());
-            OPTIONAL_ARGUMENT(Color, diffuse, colors::black());            
+            OPTIONAL_ARGUMENT(Color, diffuse, colors::black());
             END_ARGUMENTS();
 
             MaterialProperties properties = create_material_properties_with()
