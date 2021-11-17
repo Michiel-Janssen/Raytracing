@@ -397,6 +397,7 @@
     <ClCompile Include="math\rectangle2d.cpp" />
     <ClCompile Include="primitives\transformer-primitive.cpp" />
     <ClCompile Include="primitives\csg-union-primitive.cpp" />
+    <ClCompile Include="primitives\triangle-primitive.cpp" />
     <ClCompile Include="primitives\union-primitive.cpp" />
     <ClCompile Include="raytracers\ray-tracer-v0.cpp" />
     <ClCompile Include="raytracers\ray-tracer-v1.cpp" />
@@ -520,6 +521,7 @@
     <ClInclude Include="pipeline\wif-processor.h" />
     <ClInclude Include="primitives\mesh\mesh-receiver.h" />
     <ClInclude Include="primitives\mesh\mesh-text-reader.h" />
+    <ClInclude Include="primitives\triangle-primitive.h" />
     <ClInclude Include="primitives\union-primitive.h" />
     <ClInclude Include="raytracers\ray-tracer-v1.h" />
     <ClInclude Include="raytracers\ray-tracer-v2.h" />
