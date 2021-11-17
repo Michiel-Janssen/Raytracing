@@ -13,11 +13,9 @@ using namespace raytracer::raytracers::_private_;
 
 Color RayTracerV4::process_light_ray(const Scene& scene, const MaterialProperties& properties, const Hit& hit, const math::Ray& ray, const LightRay light_ray) const
 {
-	Hit newHit;
+	Hit light_hit;
 	
-	auto light_hit = scene.root->find_first_positive_hit(ray, &newHit);
-
-	if (light_hit && !(0 <= newHit.t) && !(newHit.t < 1))
+	if (scene.root->find_first_positive_hit(light_ray.ray, &light_hit) && (0.01 >= light_hit.t || light_hit.t > 0.99))
 	{
 		return RayTracerV3::process_light_ray(scene, properties, hit, ray, light_ray);
 	}
