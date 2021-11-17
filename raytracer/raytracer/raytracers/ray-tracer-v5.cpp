@@ -15,30 +15,23 @@ using namespace raytracer::raytracers::_private_;
 
 Color RayTracerV5::process_light_ray(const Scene& scene, const MaterialProperties& properties, const Hit& hit, const math::Ray& ray, const LightRay light_ray) const
 {
-	auto hits = scene.root->find_all_hits(ray);
+	auto hits = scene.root->find_all_hits(light_ray.ray);
 	Color color_filter = colors::white();
 
 
-	std::vector<Hit> hitList;
-
 	for (auto h : hits)
 	{
-		if (0 < h->t && h->t < 1)
+		if (h->t > 0 && h->t < 0.9999)
 		{
-			hitList.push_back(*h);
+			MaterialProperties matProps = h->material->at(h->local_position);
+
+			color_filter = color_filter * matProps.light_filtering;
 		}
 	}
 
-	for (Hit hit : hitList)
-	{
-		MaterialProperties matProps = hit.material->at(hit.local_position);
+	auto surviving_light_ray = LightRay(light_ray.ray, light_ray.color * color_filter);
 
-		color_filter = color_filter * matProps.light_filtering;
-	}
-
-	auto surviving_ligth_ray = LightRay(light_ray.ray, light_ray.color * color_filter);
-
-	return RayTracerV3::process_light_ray(scene, properties, hit, ray, surviving_ligth_ray);
+	return RayTracerV3::process_light_ray(scene, properties, hit, ray, surviving_light_ray);
 }
 
 raytracer::RayTracer raytracer::raytracers::v5()
