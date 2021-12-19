@@ -3,10 +3,6 @@
 #include "scripting/raytracing-module.h"
 #include "raytracers/ray-tracers.h"
 #include "scripting/scripting-util.h"
-#include "raytracers/ray-tracer-v1.h"
-#include "raytracers/ray-tracer-v2.h"
-#include <raytracers/ray-tracer-v3.h>
-#include <raytracers/ray-tracer-v4.h>
 
 
 using namespace chaiscript;
@@ -29,6 +25,8 @@ namespace
         RayTracer v4() const { return raytracer::raytracers::v4(); }
 
         RayTracer v5() const { return raytracer::raytracers::v5(); }
+
+        RayTracer v6() const { return raytracer::raytracers::v6(); }
     };
 
     std::shared_ptr<Scene> create_scene(Camera camera, Primitive root, const std::vector<Boxed_Value>& boxed_lights)
@@ -61,7 +59,8 @@ ModulePtr raytracer::scripting::_private_::create_raytracing_module()
     BIND(v3);
     BIND(v4);
     BIND(v5);
-    BIND_AS(v5, latest);
+    BIND(v6);
+    BIND_AS(v6, latest);
 #   undef BIND
 
     // Expose create_scene under the same name

@@ -9,12 +9,14 @@ raytracer::MaterialProperties::MaterialProperties(
     const Color& diffuse,
     const Color& specular,
     const double specular_exponent,
-    const Color& light_filtering)
+    const Color& light_filtering,
+    const double reflectivity)
     : ambient(ambient)
     , diffuse(diffuse)
     , specular(specular)
     , specular_exponent(specular_exponent)
     , light_filtering(light_filtering)
+    , reflectivity(reflectivity)
 
 {
     // NOP
@@ -26,6 +28,7 @@ raytracer::MaterialPropertiesBuilder::MaterialPropertiesBuilder()
     , m_specular(colors::black())
     , m_specular_exponent(50)
     , m_light_filtering(colors::black())
+    , m_reflectivity(0)
 {
     // NOP
 }
@@ -59,6 +62,13 @@ raytracer::MaterialPropertiesBuilder& raytracer::MaterialPropertiesBuilder::ligh
     return *this;
 }
 
+raytracer::MaterialPropertiesBuilder& raytracer::MaterialPropertiesBuilder::reflectivity(const double x)
+{
+    m_reflectivity = x;
+
+    return *this;
+}
+
 raytracer::MaterialPropertiesBuilder::operator raytracer::MaterialProperties() const
 {
     return MaterialProperties(
@@ -66,6 +76,7 @@ raytracer::MaterialPropertiesBuilder::operator raytracer::MaterialProperties() c
         m_diffuse,
         m_specular,
         m_specular_exponent,
-        m_light_filtering
+        m_light_filtering,
+        m_reflectivity
     );
 }

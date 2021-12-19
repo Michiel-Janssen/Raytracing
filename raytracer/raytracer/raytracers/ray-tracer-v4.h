@@ -1,7 +1,5 @@
 #pragma once
 
-#include "raytracers/ray-tracer.h"
-#include "raytracers/ray-tracer-v2.h"
 #include "raytracers/ray-tracer-v3.h"
 #include <memory>
 

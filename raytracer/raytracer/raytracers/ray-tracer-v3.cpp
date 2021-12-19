@@ -1,5 +1,3 @@
-#include "ray-tracer-v1.h"
-#include "ray-tracer-v2.h"
 #include "ray-tracer-v3.h"
 #include <iostream>     
 #include <cmath>
