@@ -27,6 +27,8 @@ namespace
         RayTracer v5() const { return raytracer::raytracers::v5(); }
 
         RayTracer v6() const { return raytracer::raytracers::v6(); }
+
+        RayTracer v7() const { return raytracer::raytracers::v7(); }
     };
 
     std::shared_ptr<Scene> create_scene(Camera camera, Primitive root, const std::vector<Boxed_Value>& boxed_lights)
@@ -60,7 +62,8 @@ ModulePtr raytracer::scripting::_private_::create_raytracing_module()
     BIND(v4);
     BIND(v5);
     BIND(v6);
-    BIND_AS(v6, latest);
+    BIND(v7);
+    BIND_AS(v7, latest);
 #   undef BIND
 
     // Expose create_scene under the same name
