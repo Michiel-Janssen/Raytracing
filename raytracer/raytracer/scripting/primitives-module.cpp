@@ -23,6 +23,11 @@ namespace
 
         return primitives::make_union(children);
     }
+
+    Primitive bounding_box_accelerator(Primitive primitive)
+    {
+        return raytracer::primitives::bounding_box_accelerator(primitive);
+    }
 }
 
 ModulePtr raytracer::scripting::_private_::create_primitives_module()
@@ -45,6 +50,7 @@ ModulePtr raytracer::scripting::_private_::create_primitives_module()
     BIND_DIRECTLY(xz_plane);
     BIND_DIRECTLY(yz_plane);
     BIND_DIRECTLY(csg_union);
+    BIND_HELPER_FUNCTION_AS(bounding_box_accelerator, bbacc);
     BIND_HELPER_FUNCTION_AS(make_union, union);
     BIND_DIRECTLY(decorate);
     BIND_DIRECTLY(translate);

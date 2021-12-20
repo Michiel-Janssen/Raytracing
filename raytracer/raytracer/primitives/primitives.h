@@ -6,3 +6,4 @@
 #include "primitives/decorator-primitive.h"
 #include "primitives/transformer-primitive.h"
 #include "primitives/csg-union-primitive.h"
+#include "primitives/bbacc.h"

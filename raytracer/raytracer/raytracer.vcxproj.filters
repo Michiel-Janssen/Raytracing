@@ -262,6 +262,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="raytracers\ray-tracer-v6.cpp">
+    <ClCompile Include="primitives\bbacc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -807,6 +808,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="raytracers\ray-tracer-v6.h">
+    <ClInclude Include="primitives\bbacc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

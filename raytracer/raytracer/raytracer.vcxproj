@@ -372,6 +372,7 @@
     <ClCompile Include="pipeline\text-writer-consumer.cpp" />
     <ClCompile Include="pipeline\wif-consumer.cpp" />
     <ClCompile Include="pipeline\wif-processor.cpp" />
+    <ClCompile Include="primitives\bbacc.cpp" />
     <ClCompile Include="primitives\mesh\mesh-text-reader.cpp" />
     <ClCompile Include="primitives\primitive.cpp" />
     <ClCompile Include="imaging\color-mapper.cpp" />
@@ -519,6 +520,7 @@
     <ClInclude Include="pipeline\text-writer-consumer.h" />
     <ClInclude Include="pipeline\wif-consumer.h" />
     <ClInclude Include="pipeline\wif-processor.h" />
+    <ClInclude Include="primitives\bbacc.h" />
     <ClInclude Include="primitives\mesh\mesh-receiver.h" />
     <ClInclude Include="primitives\mesh\mesh-text-reader.h" />
     <ClInclude Include="primitives\union-primitive.h" />
