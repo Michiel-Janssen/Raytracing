@@ -23,13 +23,17 @@ namespace
             const Color& diffuse,
             const Color& specular,
             const double specular_exponent,
-            const Color& light_filtering) const
+            const Color& light_filtering,
+            const double reflectivity,
+            const double translucency) const
         {
             MaterialProperties properties = create_material_properties_with()
                 .ambient(ambient)
                 .diffuse(diffuse)
                 .specular(specular, specular_exponent)
-                .light_filtering(light_filtering);
+                .light_filtering(light_filtering)
+                .reflectivity(reflectivity)
+                .translucency(translucency);
 
             return raytracer::materials::uniform(properties);
         }
@@ -42,13 +46,17 @@ namespace
             OPTIONAL_ARGUMENT(Color, specular, colors::black());
             OPTIONAL_ARGUMENT(double, specular_exponent, 50);
             OPTIONAL_ARGUMENT(Color, light_filtering, colors::black());
+            OPTIONAL_ARGUMENT(double, reflectivity, 0);
+            OPTIONAL_ARGUMENT(double, translucency, 0);
             END_ARGUMENTS();
 
             MaterialProperties properties = create_material_properties_with()
                 .ambient(ambient)
                 .diffuse(diffuse)
                 .specular(specular, specular_exponent)
-                .light_filtering(light_filtering);
+                .light_filtering(light_filtering)
+                .reflectivity(reflectivity)
+                .translucency(translucency);
 
             return raytracer::materials::uniform(properties);
         }

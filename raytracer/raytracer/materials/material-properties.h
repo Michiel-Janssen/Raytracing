@@ -13,7 +13,9 @@ namespace raytracer
             const imaging::Color& diffuse,
             const imaging::Color& specular,
             const double specular_exponent,
-            const imaging::Color& light_filtering);
+            const imaging::Color& light_filtering,
+            const double reflectivity,
+            const double translucency);
 
     public:
         const imaging::Color ambient;
@@ -21,6 +23,8 @@ namespace raytracer
         const imaging::Color specular;
         const double specular_exponent;
         const imaging::Color light_filtering;
+        const double reflectivity;
+        const double translucency;
 
         friend class MaterialPropertiesBuilder;
     };
@@ -34,6 +38,8 @@ namespace raytracer
         MaterialPropertiesBuilder& diffuse(const imaging::Color& color);
         MaterialPropertiesBuilder& specular(const imaging::Color& specular, const double specular_exponent);
         MaterialPropertiesBuilder& light_filtering(const imaging::Color& light_filtering);
+        MaterialPropertiesBuilder& reflectivity(const double reflectivity);
+        MaterialPropertiesBuilder& translucency(const double translucency);
 
         operator raytracer::MaterialProperties() const;
 
@@ -43,6 +49,8 @@ namespace raytracer
         imaging::Color m_specular;
         double m_specular_exponent;
         imaging::Color m_light_filtering;
+        double m_reflectivity;
+        double m_translucency;
     };
 
     inline MaterialPropertiesBuilder create_material_properties_with()
