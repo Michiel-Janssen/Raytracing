@@ -11,14 +11,18 @@
 using namespace chaiscript;
 using namespace raytracer;
 
-
 namespace
 {
     struct RendererLibrary
     {
         Renderer standard(unsigned width, unsigned height, Sampler sampler, RayTracer ray_tracer) const
         {
+            return raytracer::renderers::standard(width, height, sampler, ray_tracer, tasks::schedulers::naive_parallel());
+            //naive_parallel()
+            //serial()
+#       ifndef NDEBUG
             return raytracer::renderers::standard(width, height, sampler, ray_tracer, tasks::schedulers::serial());
+#       endif 
         }
 
         Renderer standard_by_map(const std::map<std::string, Boxed_Value>& argument_map) const
