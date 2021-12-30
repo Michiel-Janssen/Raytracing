@@ -415,6 +415,7 @@
     <ClCompile Include="samplers\random-sampler.cpp" />
     <ClCompile Include="samplers\sampler.cpp" />
     <ClCompile Include="samplers\single-sampler.cpp" />
+    <ClCompile Include="samplers\stratified-sampler.cpp" />
     <ClCompile Include="scripting\animation-module.cpp" />
     <ClCompile Include="scripting\cameras-module.cpp" />
     <ClCompile Include="scripting\imaging-module.cpp" />
@@ -432,6 +433,7 @@
     <ClCompile Include="tasks\naive-parallel-task-scheduler.cpp" />
     <ClCompile Include="tasks\serial-task-scheduler.cpp" />
     <ClCompile Include="tests\main.cpp" />
+    <ClCompile Include="tests\stratified-sampler-tests.cpp" />
     <ClCompile Include="util\base64.cpp" />
     <ClCompile Include="util\beep.cpp" />
     <ClCompile Include="util\misc.cpp" />
@@ -595,6 +597,7 @@
     <ClInclude Include="samplers\samplers.h" />
     <ClInclude Include="samplers\single-sampler.h" />
     <ClInclude Include="data-structures\array.h" />
+    <ClInclude Include="samplers\stratified-sampler.h" />
     <ClInclude Include="scripting\animation-module.h" />
     <ClInclude Include="scripting\cameras-module.h" />
     <ClInclude Include="scripting\imaging-module.h" />
