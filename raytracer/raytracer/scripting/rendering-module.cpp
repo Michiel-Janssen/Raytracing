@@ -17,11 +17,12 @@ namespace
     {
         Renderer standard(unsigned width, unsigned height, Sampler sampler, RayTracer ray_tracer) const
         {
-            return raytracer::renderers::standard(width, height, sampler, ray_tracer, tasks::schedulers::naive_parallel());
-            //naive_parallel()
-            //serial()
 #       ifndef NDEBUG
             return raytracer::renderers::standard(width, height, sampler, ray_tracer, tasks::schedulers::serial());
+            //naive_parallel()
+            //serial()
+#       else
+            return raytracer::renderers::standard(width, height, sampler, ray_tracer, tasks::schedulers::naive_parallel());
 #       endif 
         }
 
