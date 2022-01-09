@@ -7,7 +7,7 @@
 
 void CommandLineParser::register_processor(const std::string& prefix, std::function<void()> processor)
 {
-    std::function<void(std::list<std::string>&)> wrapper = [processor](std::list<std::string>& arguments) -> void {
+    std::function<void(std::list<std::string>&)> wrapper = [processor](std::list<std::string>&) -> void {
         processor();
     };
 

@@ -25,3 +25,12 @@ bool math::operator !=(const Rectangle2D& r1, const Rectangle2D& r2)
 {
     return !(r1 == r2);
 }
+
+Rectangle2D math::Rectangle2D::axis_aligned(const math::Interval<double>& x_range, const math::Interval<double>& y_range)
+{
+    const Point2D origin(x_range.lower, y_range.lower);
+    const Vector2D x_axis(x_range.size(), 0);
+    const Vector2D y_axis(0, y_range.size());
+
+    return Rectangle2D(origin, x_axis, y_axis);
+}

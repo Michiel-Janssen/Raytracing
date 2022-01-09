@@ -30,6 +30,14 @@ namespace math
         /// Returns the center of the rectangle, i.e. <code>from_relative(Point2D(0.5, 0.5))</code>
         /// </summary>
         Point2D center() const;
+
+        /// <summary>
+        /// Create a rectangle whose sides are aligned with the X- and Y-axis.
+        /// </summary>
+        /// <param name="x_range">Horizontal range over which the rectangle spans.</param>
+        /// <param name="y_range">Vertical range over which the rectangle spans.</param>
+        /// <returns>Rectangle.</returns>
+        static Rectangle2D axis_aligned(const math::Interval<double>& x_range, const math::Interval<double>& y_range);
     };
 
     bool operator ==(const Rectangle2D&, const Rectangle2D&);

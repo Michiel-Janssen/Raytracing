@@ -25,7 +25,7 @@ namespace animation
 
             // Map [0, 1] to target interval. Say animation_interval equals [3, 9],
             // then 0 -> 3, 0.5 -> 6, 1 -> 9, etc.
-            return animation_interval.from_relative(double_animation(now));
+            return animation_interval.from_relative(t);
         };
 
         // Turns the function into an Animation object

@@ -17,7 +17,7 @@ add_definitions(-DELPP_CUSTOM_OUT=std::cerr -DELPP_THREAD_SAFE -DELPP_FEATURE_PE
 include_directories(".")
 
 
-file(GLOB SOURCE_FILES *.cpp)
+file(GLOB_RECURSE SOURCE_FILES *.cpp)
 
 add_executable(raytracer
                 ${SOURCE_FILES}
