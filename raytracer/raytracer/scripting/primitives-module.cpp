@@ -23,6 +23,17 @@ namespace
 
         return primitives::make_union(children);
     }
+
+    Primitive csg_union(const std::vector<chaiscript::Boxed_Value>& boxed_children)
+    {
+        std::vector<Primitive> children(boxed_children.size());
+
+        std::transform(boxed_children.begin(), boxed_children.end(), children.begin(), [](chaiscript::Boxed_Value boxed) {
+            return chaiscript::boxed_cast<Primitive>(boxed);
+            });
+
+        return primitives::csg_union(children);
+    }
 }
 
 ModulePtr raytracer::scripting::_private_::create_primitives_module()
@@ -42,8 +53,8 @@ ModulePtr raytracer::scripting::_private_::create_primitives_module()
 #   define BIND_DIRECTLY(NAME)                         BIND_HELPER_FUNCTION_AS(raytracer::primitives::NAME, NAME)
     BIND_DIRECTLY(sphere);
     BIND_DIRECTLY(xy_plane);
-    BIND_DIRECTLY(csg_union);
     BIND_HELPER_FUNCTION_AS(make_union, union);
+    BIND_HELPER_FUNCTION_AS(csg_union, csg_union);
     BIND_DIRECTLY(decorate);
     BIND_DIRECTLY(translate);
 #   undef BIND_HELPER_FUNCTION_AS
