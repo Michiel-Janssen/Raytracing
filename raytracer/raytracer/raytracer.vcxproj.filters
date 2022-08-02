@@ -111,6 +111,9 @@
     <ClCompile Include="tests\stratified-sampler-tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tasks\unbalanced-parallel-task-scheduler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imaging\bitmap.cpp">
@@ -914,6 +917,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="samplers\stratified-sampler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tasks\unbalanced-parallel-task-scheduler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
