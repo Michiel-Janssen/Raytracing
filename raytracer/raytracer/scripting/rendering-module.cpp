@@ -24,7 +24,9 @@ namespace
 #       else
             //return raytracer::renderers::standard(width, height, sampler, ray_tracer, tasks::schedulers::serial());
             //return raytracer::renderers::standard(width, height, sampler, ray_tracer, tasks::schedulers::naive_parallel());
-            return raytracer::renderers::standard(width, height, sampler, ray_tracer, tasks::schedulers::unbalanced_parallel(4));
+            //return raytracer::renderers::standard(width, height, sampler, ray_tracer, tasks::schedulers::unbalanced_parallel(4));
+            return raytracer::renderers::standard(width, height, sampler, ray_tracer, tasks::schedulers::balanced_parallel(4));
+
 
 #       endif 
         }
