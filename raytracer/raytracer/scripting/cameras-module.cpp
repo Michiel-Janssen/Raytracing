@@ -23,6 +23,18 @@ namespace
             return cameras::perspective(eye, look_at, up, distance, aspect_ratio);
         }
 
+        Camera depthoffieldperspective(
+            const Point3D& eye,
+            const Point3D& look_at,
+            const Vector3D& up,
+            double distance,
+            double aspect_ratio,
+            double eye_size,
+            Sampler sampler) const
+        {
+            return cameras::depthoffieldperspective(eye, look_at, up, distance, aspect_ratio, eye_size, sampler);
+        }
+
         Camera perspective_by_map(const std::map<std::string, Boxed_Value>& argument_map) const
         {
             START_ARGUMENTS(argument_map);
@@ -34,6 +46,21 @@ namespace
             END_ARGUMENTS();
 
             return cameras::perspective(eye, look_at, up, distance, aspect_ratio);
+        }
+
+        Camera depthoffieldperspective_by_map(const std::map<std::string, Boxed_Value>& argument_map) const
+        {
+            START_ARGUMENTS(argument_map);
+            ARGUMENT(Point3D, eye);
+            ARGUMENT(Point3D, look_at);
+            OPTIONAL_ARGUMENT(Vector3D, up, Vector3D(0, 1, 0));
+            OPTIONAL_ARGUMENT(double, distance, 1);
+            OPTIONAL_ARGUMENT(double, aspect_ratio, 1);
+            ARGUMENT(double, eye_size);
+            ARGUMENT(Sampler, sampler);
+            END_ARGUMENTS();
+
+            return cameras::depthoffieldperspective(eye, look_at, up, distance, aspect_ratio, eye_size, sampler);
         }
     };
 }
@@ -50,6 +77,7 @@ ModulePtr raytracer::scripting::_private_::create_cameras_module()
 #   define BIND_AS(INTERNAL, EXTERNAL)     module->add(fun(&CameraLibrary::INTERNAL), #EXTERNAL); module->add(fun(&CameraLibrary::INTERNAL ## _by_map), #EXTERNAL)
 #   define BIND(NAME)                      BIND_AS(NAME, NAME)
     BIND(perspective);
+    BIND(depthoffieldperspective);
 #   undef BIND
 #   undef BIND_AS
 
