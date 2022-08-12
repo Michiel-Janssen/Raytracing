@@ -120,6 +120,9 @@
     <ClCompile Include="cameras\depth-of-field-perspective-camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cameras\fisheye-camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imaging\bitmap.cpp">
@@ -932,6 +935,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cameras\depth-of-field-perspective-camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cameras\fisheye-camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
