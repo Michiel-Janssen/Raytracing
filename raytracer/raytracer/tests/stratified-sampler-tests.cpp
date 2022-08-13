@@ -1,5 +1,5 @@
 #ifdef TEST_BUILD
-#define HOMO_VAN_SCHIJNDEL
+#define stratified_sampler_tests
 #include "Catch.h"
 #include "easylogging++.h"
 #include "logging.h"
@@ -113,6 +113,47 @@ TEST_CASE("Stratified sampler test 6")
 	const auto actual = sampler->sample(rectangle);
 
 	REQUIRE(check3(actual) == true);
+}
+
+TEST_CASE("Stratified sampler test 7")
+{
+	const Rectangle2D rectangle(Point2D(0, 0), Vector2D(5, 0), Vector2D(0, 5));
+	const auto sampler = stratified_fixed(5, 5);
+	const auto actual = sampler->sample(rectangle);
+
+	REQUIRE(check3(actual) == true);
+}
+
+TEST_CASE("Stratified sampler test 8")
+{
+	const Rectangle2D rectangle(Point2D(0, 0), Vector2D(8, 0), Vector2D(0, 8));
+	const auto sampler = stratified_fixed(1, 2);
+	const auto actual = sampler->sample(rectangle);
+	const auto point1 = Point2D(2, 4);
+	const auto point2 = Point2D(6, 4);
+
+	REQUIRE(check2(point1, point2, actual) == true);
+}
+
+TEST_CASE("Stratified sampler test 9")
+{
+	const Rectangle2D rectangle(Point2D(0, 0), Vector2D(4, 0), Vector2D(0, 4));
+	const auto sampler = stratified_fixed(1, 1);
+	const auto actual = sampler->sample(rectangle);
+	const auto point = Point2D(2, 2);
+
+	REQUIRE(check(point, actual) == true);
+}
+
+TEST_CASE("Stratified sampler test 10")
+{
+	const Rectangle2D rectangle(Point2D(2, 2), Vector2D(2, 0), Vector2D(0, 4));
+	const auto sampler = stratified_fixed(2, 1);
+	const auto actual = sampler->sample(rectangle);
+	const auto point1 = Point2D(3, 3);
+	const auto point2 = Point2D(3, 5);
+
+	REQUIRE(check2(point1, point2, actual) == true);
 }
 
 #endif
