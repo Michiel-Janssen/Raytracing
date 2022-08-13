@@ -414,6 +414,7 @@
     <ClCompile Include="renderers\renderer-base.cpp" />
     <ClCompile Include="renderers\standard-renderer.cpp" />
     <ClCompile Include="lights\light-ray.cpp" />
+    <ClCompile Include="samplers\n-rooks-sampler.cpp" />
     <ClCompile Include="samplers\random-sampler.cpp" />
     <ClCompile Include="samplers\sampler.cpp" />
     <ClCompile Include="samplers\single-sampler.cpp" />
@@ -439,6 +440,7 @@
     <ClCompile Include="tasks\naive-parallel-task-scheduler.cpp" />
     <ClCompile Include="tasks\serial-task-scheduler.cpp" />
     <ClCompile Include="tests\main.cpp" />
+    <ClCompile Include="tests\n-rooks-sampler-tests.cpp" />
     <ClCompile Include="tests\stratified-half-jittered-sampler-tests.cpp" />
     <ClCompile Include="tests\stratified-sampler-tests.cpp" />
     <ClCompile Include="tests\stratified-jittered-sampler-tests.cpp" />
@@ -602,6 +604,7 @@
     <ClInclude Include="renderers\renderers.h" />
     <ClInclude Include="renderers\standard-renderer.h" />
     <ClInclude Include="lights\light-ray.h" />
+    <ClInclude Include="samplers\n-rooks-sampler.h" />
     <ClInclude Include="samplers\random-sampler.h" />
     <ClInclude Include="samplers\sampler.h" />
     <ClInclude Include="samplers\samplers.h" />
