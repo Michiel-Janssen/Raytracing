@@ -115,12 +115,14 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="tasks\balanced-parallel-task-scheduler.cpp">
+    <ClCompile Include="samplers\stratified-jittered-sampler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cameras\depth-of-field-perspective-camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cameras\fisheye-camera.cpp">
+    <ClCompile Include="tests\stratified-jittered-sampler-tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -932,6 +934,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tasks\balanced-parallel-task-scheduler.h">
+    <ClInclude Include="samplers\stratified-jittered-sampler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cameras\depth-of-field-perspective-camera.h">
