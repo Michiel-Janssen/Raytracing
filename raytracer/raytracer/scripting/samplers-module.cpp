@@ -32,6 +32,11 @@ namespace
         {
             return samplers::stratified_jittered(rows, columns);
         }
+
+        Sampler halfjittered(unsigned rows, unsigned columns) const
+        {
+            return samplers::stratified_half_jittered(rows, columns);
+        }
     };
 }
 
@@ -49,9 +54,10 @@ ModulePtr raytracer::scripting::_private_::create_samplers_module()
     BIND(random);
     BIND(stratified_fixed);
     BIND(stratified_jittered);
+    BIND(halfjittered);
 #   undef BIND
 
     return module;
-}
+}   
 
 #endif
