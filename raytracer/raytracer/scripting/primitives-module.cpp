@@ -28,6 +28,17 @@ namespace
     {
         return raytracer::primitives::bounding_box_accelerator(primitive);
     }
+
+    Primitive csg_union(const std::vector<chaiscript::Boxed_Value>& boxed_children)
+    {
+        std::vector<Primitive> children(boxed_children.size());
+
+        std::transform(boxed_children.begin(), boxed_children.end(), children.begin(), [](chaiscript::Boxed_Value boxed) {
+            return chaiscript::boxed_cast<Primitive>(boxed);
+            });
+
+        return primitives::csg_union(children);
+    }
 }
 
 ModulePtr raytracer::scripting::_private_::create_primitives_module()
@@ -53,6 +64,7 @@ ModulePtr raytracer::scripting::_private_::create_primitives_module()
     BIND_DIRECTLY(triangle);
     BIND_HELPER_FUNCTION_AS(bounding_box_accelerator, bbacc);
     BIND_HELPER_FUNCTION_AS(make_union, union);
+    BIND_HELPER_FUNCTION_AS(csg_union, csg_union);
     BIND_DIRECTLY(decorate);
     BIND_DIRECTLY(translate);
     BIND_DIRECTLY(mesh);

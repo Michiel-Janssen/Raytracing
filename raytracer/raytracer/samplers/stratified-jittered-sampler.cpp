@@ -19,13 +19,14 @@ namespace
         void sample(const math::Rectangle2D& rectangle, std::function<void(const math::Point2D&)> function) const override
         {
             auto grid_of_mini_rectangles = Rasterizer(rectangle, columns, rows);
+            double x, y;
 
             for (unsigned i = 0; i < rows; ++i)
             {
                 for (unsigned j = 0; j < columns; ++j)
                 {
-                    double x = ((double)rand() / (RAND_MAX));
-                    double y = ((double)rand() / (RAND_MAX));
+                    x = ((double)rand() / (RAND_MAX));
+                    y = ((double)rand() / (RAND_MAX));
                     function(grid_of_mini_rectangles[Position2D(i, j)].from_relative(math::Point2D(x, y)));
                 }
             }
