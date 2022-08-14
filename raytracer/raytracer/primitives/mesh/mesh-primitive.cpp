@@ -3,6 +3,8 @@
 #include "primitives/mesh/mesh-text-reader.h"
 #include "primitives/primitives.h"
 #include <fstream>
+#include <Catch.h>
+#include <easylogging++.h>
 
 /*
     https://www.cplusplus.com/reference/fstream/ifstream/
@@ -67,12 +69,16 @@ public:
 Primitive raytracer::primitives::mesh(const std::string& path)
 {
     MeshImplementation meshImplementation;
+    
     std::filebuf reader;
     reader.open(path, std::ios_base::in);
+    CHECK(bool(reader.is_open())) << "Failed to open file at " << path;
 
     std::istream stream(&reader);
     read_text_mesh(stream, meshImplementation);
 
     reader.close();
     return meshImplementation.all_primitives.front();
+    
+
 }

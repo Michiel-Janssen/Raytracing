@@ -40,36 +40,21 @@ Camera raytracer::cameras::depthoffieldperspective(
     Sampler eye_sampler)
 {
     
-    //assert(up.is_unit()); 
+    assert(up.is_unit()); 
     Matrix4x4 transformation = _private_::create_transformation(eye, look_at, up);
 
     
-    auto canonical_look_at = Point3D(0, 0, distance);
-    //assert(canonical_look_at.x == 0);
-    //assert(canonical_look_at.y == 0);
-    //assert(canonical_look_at.z == math::distance(eye, look_at));
-
-   
-    auto canonical_up = up;
+    auto canonical_look_at = Point3D(0, 0, math::distance(eye, look_at));   
+    const auto& canonical_up = up; 
 
     std::vector<Camera> cameras;
 
     auto left_under = -(eye_size / 2);
     auto eye_area = Rectangle2D(Point2D(left_under, left_under), Vector2D(eye_size, 0), Vector2D(0, eye_size));
-    //assert(eye_area->center == Point2D(0, 0));
+    assert(eye_area->center == Point2D(0, 0));
 
 
-    /*
-            Camera perspective(
-            const Point3D& eye,
-            const Point3D& look_at,
-            const Vector3D& up,
-            double distance,
-            double aspect_ratio) const
-        
-            return cameras::perspective(eye, look_at, up, distance, aspect_ratio);
-    */
-         
+
     auto add_camera = [canonical_look_at, canonical_up, distance, aspect_ratio, &cameras] (math::Point2D eye_2d)
     {
         auto canonical_eye = Point3D(eye_2d.x(), eye_2d.y(), 0);
@@ -83,6 +68,5 @@ Camera raytracer::cameras::depthoffieldperspective(
 
 
     return Camera(std::make_shared<_private_::DepthOfFieldPerspectiveCamera>(transformation, cameras));
-    return Camera();
 }
     
