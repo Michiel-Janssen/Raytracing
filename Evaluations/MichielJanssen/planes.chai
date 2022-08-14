@@ -1,0 +1,48 @@
+def scene_at(now)
+{
+var animate_right = Animations.animate(0, 1.5, seconds(5))
+var animate_left = Animations.animate(0, -1.5, seconds(5))
+  var camera = Cameras.perspective( [ "eye": pos(0,0,7),
+                                      "look_at": pos(0,0,0) ] )
+
+  var floor_material = Materials.uniform( [ "ambient": Colors.red() * 0.1,
+                                            "diffuse": Colors.red() * 0.8 ] )
+
+  var left_wall_material = Materials.uniform( [ "ambient": Colors.green() * 0.1,
+                                                "diffuse": Colors.green() * 0.8 ] )
+
+  var right_wall_material = Materials.uniform( [ "ambient": Colors.green() * 0.1,
+                                                 "diffuse": Colors.green() * 0.8 ] )
+
+  var back_wall_material = Materials.uniform( [ "ambient": Colors.blue() * 0.1,
+                                                "diffuse": Colors.blue() * 0.8 ] )
+
+  var ceiling_material = floor_material
+
+
+  var primitives = []
+  primitives.push_back( translate(vec(0,-2,0), decorate(floor_material, xz_plane())) )
+  primitives.push_back( translate(vec(0,2,0), decorate(ceiling_material, xz_plane())) )
+  primitives.push_back( translate(vec(animate_left[now]-2,0,0), decorate(left_wall_material, yz_plane())) )
+  primitives.push_back( translate(vec(animate_right[now]+2,0,0), decorate(right_wall_material, yz_plane())) )
+  primitives.push_back( translate(vec(0,0,-2), decorate(back_wall_material, xy_plane())) )
+ 
+
+  var root = union(primitives)
+
+  var lights = [ Lights.omnidirectional( pos(0,0,0), Colors.white() ) ]
+
+  var scene = create_scene(camera, root, lights)
+}
+var raytracer   = Raytracers.v7()
+var renderer    = Renderers.standard( [ "width": 500,
+                                        "height": 500,
+                                        "sampler": Samplers.single(),
+                                        "ray_tracer": raytracer ] )
+
+pipeline( scene_animation(scene_at, seconds(5)),
+          [ Pipeline.animation(30),
+            Pipeline.renderer(renderer),
+            Pipeline.wif(),
+            Pipeline.base64(),
+            Pipeline.stdout() ] )

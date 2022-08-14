@@ -1,0 +1,36 @@
+var camera = Cameras.perspective( [ "eye": pos(0,0,8),
+                                    "look_at": pos(0,0,0) ] )
+
+
+  var sphere_material = Materials.uniform( [ "ambient": Colors.blue() * 0.1,
+                                             "diffuse": Colors.blue() * 0.8,
+                                             "specular": Colors.white() * 0.8,
+                                             "specular_exponent": 10,
+                                             "light_filtering": Colors.green() ] )
+
+
+
+  var primitives = []
+  for (var i = 16; i < 5016; ++i)
+  {
+  	primitives.push_back( translate(vec(0,0,i), decorate(sphere_material, sphere())) )
+  }
+var root = bbacc(union(primitives))
+
+var lights = [ Lights.omnidirectional( pos(0,2.5,0), Colors.white() ),
+				Lights.omnidirectional( pos(0,3,5), Colors.white() )]
+
+var scene = create_scene(camera, root, lights)
+
+var raytracer = Raytracers.v5()
+
+var renderer = Renderers.standard( [ "width": 500,
+                                     "height": 500,
+                                     "sampler": Samplers.single(),
+                                     "ray_tracer": raytracer ] )
+
+pipeline( scene,
+          [ Pipeline.renderer(renderer),
+            Pipeline.wif(),
+            Pipeline.base64(),
+            Pipeline.stdout() ] )

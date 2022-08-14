@@ -1,0 +1,54 @@
+def scene_at(now)
+{
+
+    var x = Animations.animate(5, 0, seconds(5))
+    var y = Animations.animate(0, -2, seconds(5))
+
+    var camera = Cameras.perspective( [ "eye": pos(x[now],0, y[now]+3),
+                                    "look_at": pos(0, 0, -1) ] )
+
+
+    var red = Materials.uniform( [ "ambient": Colors.red() * 0.1, "diffuse": Colors.red() * 0.9, "translucency": 1 ] )
+                                    
+    var green = Materials.uniform( [ "ambient": Colors.green() * 0.1, "diffuse": Colors.green() * 0.9, "translucency": 1 ] )       
+
+    var blue = Materials.uniform( [ "ambient": Colors.blue() * 0.1, "diffuse": Colors.blue() * 0.9, "translucency": 1 ] )   
+
+    var primitives = []
+    
+    for (var i = 0; i < 9; ++i)
+    {
+    if (i == 0 || i == 3) {
+        primitives.push_back( translate(vec(-2,0,-3*i), decorate(red, sphere())) )
+        primitives.push_back( translate(vec(2,0,-3*i), decorate(red, sphere())) )    
+    }
+    else if (i % 3 == 1) {
+        primitives.push_back( translate(vec(-2,0,-3*i), decorate(green, sphere())) )
+        primitives.push_back( translate(vec(2,0,-3*i), decorate(green, sphere())) )
+    }
+    else {
+        primitives.push_back( translate(vec(-2,0,-3*i), decorate(blue, sphere())) )
+        primitives.push_back( translate(vec(2,0,-3*i), decorate(blue, sphere())) )
+        }
+    }
+    
+
+    var root = union(primitives)
+
+    var lights = [ Lights.omnidirectional( pos(0,3,3), Colors.white() ) ]
+
+    var scene = create_scene(camera, root, lights)
+}
+    var raytracer = Raytracers.v7()
+
+    var renderer = Renderers.standard( [ "width": 500,
+                                     "height": 500,
+                                     "sampler": Samplers.single(),
+                                     "ray_tracer": raytracer ] )
+
+pipeline( scene_animation(scene_at, seconds(5)),
+          [ Pipeline.animation(30),
+            Pipeline.renderer(renderer),
+            Pipeline.wif(),
+            Pipeline.base64(),
+            Pipeline.stdout()] )
