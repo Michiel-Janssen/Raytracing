@@ -17,9 +17,6 @@ raytracer::cameras::_private_::DepthOfFieldPerspectiveCamera::DepthOfFieldPerspe
 
 void raytracer::cameras::_private_::DepthOfFieldPerspectiveCamera::enumerate_untransformed_rays(const Point2D& point, std::function<void(const math::Ray&)> callback) const
 {
-    assert(interval(0.0, 1.0).contains(point.x()));
-    assert(interval(0.0, 1.0).contains(point.y()));
-
     for (auto camera : cameras)
     {
         camera->enumerate_rays(point, callback);
@@ -40,7 +37,6 @@ Camera raytracer::cameras::depthoffieldperspective(
     Sampler eye_sampler)
 {
     
-    assert(up.is_unit()); 
     Matrix4x4 transformation = _private_::create_transformation(eye, look_at, up);
 
     
@@ -51,7 +47,6 @@ Camera raytracer::cameras::depthoffieldperspective(
 
     auto left_under = -(eye_size / 2);
     auto eye_area = Rectangle2D(Point2D(left_under, left_under), Vector2D(eye_size, 0), Vector2D(0, eye_size));
-    assert(eye_area->center == Point2D(0, 0));
 
 
 
