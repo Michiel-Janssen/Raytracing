@@ -5,4 +5,5 @@
 #include "samplers/stratified-jittered-sampler.h"
 #include "samplers/stratified-half-jittered-sampler.h"
 #include "samplers/n-rooks-sampler.h"
+#include "samplers/multijittered-sampler.h"
 
