@@ -1,22 +1,33 @@
 {
-    "url": "https://github.com/TODO",
+    "url": "https://github.com/ucll-3dcg-2122/raytracer-coffee-addicts",
     "team-members": [
         {
-            "id": "r1111111",
-            "firstName": "Dominique",
-            "lastName": "Peeters",
-            "status": "Defense in January",
+            "id": "r0789294",
+            "firstName": "Michiel",
+            "lastName": "Janssen",
+            "status": "Defense in August",
             "extensions": [
                 "Scripting",
-                "Triangle",
-                "Mesh Optimizer"
+                "Mesh Optimizer",
+                "Ray Tracer v2",
+                "Ray Tracer v3",
+                "Ray Tracer v4",
+                "Ray Tracer v5",
+                "Ray Tracer v6",
+                "Ray Tracer v7",
+                "Planes",
+                "Bounding Box Accelerator",
+                "Random Sampler",
+                "Stratified Sampler",
+                "Stratified - Jittered Sampler",
+                "Naive Parallel Task Scheduler"
             ]
         },
         {
             "id": "r2222222",
-            "firstName": "Jo",
-            "lastName": "Janssens",
-            "status": "Not done yet",
+            "firstName": "Lucas",
+            "lastName": "Hendrickx",
+            "status": "Defense in August",
             "extensions": [
                 "Scripting",
                 "Mesh Optimizer"
