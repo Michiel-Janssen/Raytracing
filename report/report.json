@@ -24,13 +24,23 @@
             ]
         },
         {
-            "id": "r2222222",
+            "id": "r0748690",
             "firstName": "Lucas",
             "lastName": "Hendrickx",
             "status": "Defense in August",
             "extensions": [
                 "Scripting",
-                "Mesh Optimizer"
+                "Mesh Optimizer",
+                "Ray Tracer v1",
+                "Triangle",
+                "Mesh Primitive",
+                "Unbalanced Parallel Task Scheduler",
+                "Balanced Parallel Task Scheduler",
+                "Depth of Field Camera",
+                "Fisheye Camera",
+                "Stratified - Half Jittered Sampler",
+                "N-Rooks Sampler",
+                "Multijittered Sampler"
             ]
         }
     ]

@@ -1,0 +1,39 @@
+def material(c)
+{
+  Materials.uniform( [ "ambient": Colors.white() * 0.1,
+                       "diffuse": c * 0.8 ] )
+}
+
+global m = mesh("C:\\Users\\hendr\\Downloads\\small\\small.mesh")
+
+
+def scene_at(now)
+{
+  var t = Animations.animate(0.0, 1.0, seconds(3))[now]
+  var x = cos(degrees(30*t - 30))
+  var y = sin(degrees(30*t - 30))
+
+  var camera = Cameras.perspective( [ "eye": pos(3 * y, -1, 3 * x),
+                                      "look_at": pos(0,0,0) ] )
+
+
+  var root = decorate( material(Colors.white()), m )
+
+  var lights = [ Lights.omnidirectional( pos(3 * y, 5, 3 * x), Colors.white() ) ]
+
+  create_scene(camera, root, lights)
+}
+
+var raytracer   = Raytracers.v2()
+
+var renderer    = Renderers.standard( [ "width": 500,
+                                        "height": 500,
+                                        "sampler": Samplers.single(),
+                                        "ray_tracer": raytracer ] )
+
+pipeline( scene_animation(scene_at, seconds(5)),
+          [ Pipeline.animation(30),
+            Pipeline.renderer(renderer),
+            Pipeline.wif(),
+            Pipeline.base64(),
+            Pipeline.stdout() ] )

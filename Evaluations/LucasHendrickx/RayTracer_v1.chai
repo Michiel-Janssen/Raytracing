@@ -1,0 +1,31 @@
+var camera = Cameras.perspective( [ "eye": pos(0,0,10),
+                                    "look_at": pos(0,0,0) ] )
+
+var small_red_sphere_material = Materials.uniform( [ "ambient": Colors.red() * 1] )
+var small_orange_sphere_material = Materials.uniform( [ "ambient": Colors.red() * 1 + Colors.green() * 0.5] )
+var small_green_sphere_material = Materials.uniform( [ "ambient": Colors.green() * 1] )
+
+var primitives = []
+primitives.push_back( decorate( small_orange_sphere_material, sphere() ) )
+primitives.push_back( translate(vec(0,3,0), decorate( small_red_sphere_material, sphere() )) )
+primitives.push_back( translate(vec(0,-3,0), decorate( small_green_sphere_material, sphere() )) )
+
+
+var root = union(primitives)
+
+var lights = [ ]
+
+var scene = create_scene(camera, root, lights)
+
+var raytracer = Raytracers.v1()
+
+var renderer = Renderers.standard( [ "width": 500,
+                                     "height": 500,
+                                     "sampler": Samplers.single(),
+                                     "ray_tracer": raytracer ] )
+
+pipeline( scene,
+          [ Pipeline.renderer(renderer),
+            Pipeline.wif(),
+            Pipeline.base64(),
+            Pipeline.stdout() ] )
